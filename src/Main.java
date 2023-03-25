@@ -62,7 +62,7 @@ public class Main {
             anySizeNumberArray[i] = temporaryNumber;
         }
 
-        System.out.print("\nReversed looks like this: ");
+        System.out.print("\nReversed array: ");
         for (int i = 0; i < anySizeNumberArray.length; i++) {
             System.out.print(anySizeNumberArray[i] + " ");
         }
@@ -76,6 +76,7 @@ public class Main {
         for (int i = someWordCharArray.length - 1, j = 0; i > someWordCharArray.length / 2; i--, j++) {
             if (someWordCharArray[j] != someWordCharArray[i]) {
                 wordIsPalindrome = false;
+                break;
             }
         }
 
@@ -89,24 +90,16 @@ public class Main {
         System.out.println("\nTask 5: ");
         System.out.print("Please enter lower number in range: ");
         int lowerNumber = reader.nextInt();
-        System.out.print("Pleade enter larger number in range: ");
+        System.out.print("Please enter larger number in range: ");
         int largerNumber = reader.nextInt();
-        int outputConfig = 0;
-
-        for (int i = lowerNumber + 1; i < largerNumber; i++)  {
-            if (i % 2 == 0) {
-                outputConfig++;
-            }
-        }
 
         System.out.printf("Even numbers from %d to %d are: \n", lowerNumber, largerNumber);
         for (int i = lowerNumber + 1; i < largerNumber; i++) {
             if (i % 2 == 0) {
-                outputConfig--;
-                if (outputConfig == 0) {
-                    System.out.print(i);
-                } else {
+                if (i + 2 < largerNumber) {
                     System.out.print(i + ", ");
+                } else {
+                    System.out.print(i);
                 }
             }
         }
@@ -115,7 +108,7 @@ public class Main {
         System.out.println("\n\nTask 6: ");
         int[] firstArray = {1, 2, 3, 4};
         int[] secondArray = {5};
-        int[] thirdArray = {6, 7, 8,  9, 10};
+        int[] thirdArray = {6, 7, 8, 9, 10};
         int[] combinedArray = new int[firstArray.length + secondArray.length + thirdArray.length];
         int indexCounter = 0;
 
@@ -231,7 +224,7 @@ public class Main {
             for (int j = 0; j < vowelsArray.length; j++) {
                 if (stringArray[i].toLowerCase().contains(vowelsArray[j])) {
                     newArrayLength--;
-                    j = vowelsArray.length;
+                    break;
                 }
             }
         }
@@ -244,7 +237,7 @@ public class Main {
             for (int j = 0; j < vowelsArray.length; j++) {
                 if (stringArray[i].toLowerCase().contains(vowelsArray[j])) {
                     containsVowel = true;
-                    j = vowelsArray.length;
+                    break;
                 }
             }
             if (!containsVowel) {
@@ -270,7 +263,7 @@ public class Main {
 
         for (int i = 0; i < arrayOne.length; i++) {
             for (int j = 0; j < arrayTwo.length; j++) {
-                sum+= arrayOne[i] + arrayTwo[j];
+                sum += arrayOne[i] + arrayTwo[j];
             }
         }
 
