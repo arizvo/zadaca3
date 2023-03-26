@@ -7,9 +7,19 @@ public class Main {
         System.out.println("Task 1: ");
         Scanner reader = new Scanner(System.in);
         int lowerLimit = 10;
-        System.out.print("Enter number of elements for the array: ");
-        int[] newIntArray = new int[reader.nextInt()];
+        int newIntArraySize;
+        for (;;) {
+            System.out.print("Enter number of elements for the array: ");
+            newIntArraySize = reader.nextInt();
+            if (newIntArraySize <= 0) {
+                System.out.println("Number of elements for the array needs to be greater than 0.\n");
+            }
+            else {
+                break;
+            }
+        }
 
+        int[] newIntArray = new int[newIntArraySize];
         for (int i = 0; i < newIntArray.length; i++) {
             System.out.print("Enter " + (i + 1) + ". element: ");
             newIntArray[i] = reader.nextInt();
@@ -86,20 +96,40 @@ public class Main {
 
         // Task 5
         System.out.println("\nTask 5: ");
-        System.out.print("Please enter lower number in range: ");
-        int lowerNumber = reader.nextInt();
-        System.out.print("Please enter larger number in range: ");
-        int largerNumber = reader.nextInt();
+        int lowerNumber = 0;
+        int largerNumber = 0;
+        boolean evenNumberExist = false;
+        for (;;) {
+            System.out.print("Please enter lower number in range: ");
+            lowerNumber = reader.nextInt();
+            System.out.print("Please enter larger number in range: ");
+            largerNumber = reader.nextInt();
 
-        System.out.printf("Even numbers from %d to %d are: \n", lowerNumber, largerNumber);
-        for (int i = lowerNumber + 1; i < largerNumber; i++) {
-            if (i % 2 == 0) {
-                if (i + 2 < largerNumber) {
-                    System.out.print(i + ", ");
-                } else {
-                    System.out.print(i);
+            if (lowerNumber >= largerNumber) {
+                System.out.println("Lower number needs to be greater than larger number. Enter numbers again.\n");
+            } else {
+                for (int i = lowerNumber + 1; i < largerNumber; i++) {
+                    if (i % 2 == 0) {
+                        evenNumberExist = true;
+                    }
+                }
+                break;
+            }
+        }
+
+        if (evenNumberExist) {
+            System.out.printf("Even numbers from %d to %d are: \n", lowerNumber, largerNumber);
+            for (int i = lowerNumber + 1; i < largerNumber; i++) {
+                if (i % 2 == 0) {
+                    if (i + 2 < largerNumber) {
+                        System.out.print(i + ", ");
+                    } else {
+                        System.out.print(i);
+                    }
                 }
             }
+        } else {
+            System.out.print("There are no even numbers between " + lowerNumber + " and " + largerNumber + ".");
         }
 
         // Task 6
